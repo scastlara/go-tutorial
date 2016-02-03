@@ -14,7 +14,13 @@ func factorial(n int)(int) {
 }
 
 func main() {
-    num, _ := strconv.Atoi(os.Args[1]) // converts string to int
-    var result int = factorial(num)
-    fmt.Println("Factorial of", num, ":", result)
+    num, err := strconv.Atoi(os.Args[1]) // converts string to int
+
+    // Functions return your return and an error. If it's nil == error!
+    if err != nil {
+        fmt.Println("Error! ", err)
+    } else {
+        var result int = factorial(num)
+        fmt.Println("Factorial of", num, ":", result)
+    }
 }
